@@ -22,7 +22,10 @@ groovy -version
 which java
 
 # validate faketime for java
-docker run --rm -e FAKETIME=-59d -e LD_PRELOAD=/lib/faketime.so -e DONT_FAKE_MONOTONIC=1 -e TZ_FILENAME=EST5EDT -it rpradesh/javamvn:8.252.09 bash
+docker run --rm -e TZ_FILENAME=EST5EDT \
+  -e FAKETIME=-59d -e LD_PRELOAD=/lib/faketime.so -e DONT_FAKE_MONOTONIC=1 \
+  -it rpradesh/javamvn:8.252.09 bash
+  
 groovy -e "print new Date();"
 
 # copy settings file and test mvn
