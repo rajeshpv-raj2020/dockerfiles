@@ -15,6 +15,9 @@
 ## Reference
 * workshop notes https://github.com/rajeshpv-docker
 * my docker files https://github.com/rajeshpv-docker
-* my docker hub https://hub.docker.com/u/rpradesh
-  
+* my docker hub https://hub.docker.com/u/rpradesh  
+* https://codeshare.io/G77Q3b presentation notes
+* https://codeshare.io/GA9oBx commands
+* https://github.com/rajeshpv-docker/dockerfiles/tree/master/sa-workshop
+
 ## Read Later - on your own
