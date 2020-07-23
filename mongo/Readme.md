@@ -61,6 +61,7 @@ db.person.find({});
 
 # Test.2.3: using docker.for.mac.localhost or windows; is the IP visible to containers alone
 docker run  --rm -it rpradesh/mongo:3.2.22 mongo --port 27019 --host docker.for.mac.localhost
+docker run  --rm -it rpradesh/mongo:3.2.22 mongo --port 27017 --host docker.for.mac.localhost
 
 # Test.3.1: Launch Shell
 docker run  --rm --network=local_network -it rpradesh/mongo:3.2.22 bash
