@@ -1,0 +1,56 @@
+* workshop notes https://github.com/rajeshpv-docker
+* my docker files https://github.com/rajeshpv-docker
+* my docker hub https://hub.docker.com/u/rpradesh  
+* https://codeshare.io/G77Q3b presentation notes
+* https://codeshare.io/GA9oBx commands
+* https://github.com/rajeshpv-docker/dockerfiles/tree/master/sa-workshop
+
+
+
+docker -v
+docker info
+
+docker pull busybox
+docker images
+
+docker inspect busybox
+
+-it
+interactive and Terminal
+
+docker run -it busybox sh
+
+docker inspect imagename or containerId/name
+
+echo "into blissfull" > a.txt
+docker cp a.txt blissful_jang:/
+docker stop c49a65203ef6
+
+
+docker run --name=busy1 -it busybox whoami
+
+
+docker pull adoptopenjdk:8u262-b10-jdk-openj9-0.21.0
+
+docker run --name=browse2 -v `pwd`:/code -p 3032:3030 -it local/jdk8 bash
+cd code
+java -jar BrowseHere.jar 3030 ./
+
+docker exec browse2 sleep 10
+
+docker inspect browse2
+docker logs browse
+
+docker rmi imageName
+
+https://github.com/rajeshpv-docker/dockerfiles/tree/master/mongo
+
+docker run --name=mongo32_tr_1 --network=local_network -p 27019:27017 -d rpradesh/mongo:3.2.22
+docker run --name=m1 --network=local_network -it rpradesh/mongo:3.2.22 bash
+docker run --name=m1 --network=local_network -it rpradesh/mongo:3.2.22 mongo
+
+
+docker start mongo32_tr_1
+docker stop mongo32_tr_1
+docker logs mongo32_tr_1 -f
+
