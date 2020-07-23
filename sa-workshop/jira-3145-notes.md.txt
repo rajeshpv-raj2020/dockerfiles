@@ -1,0 +1,58 @@
+Hi team,
+
+Since Docker technology gives versioned app with data as container/images, it helps our daily dev activities for following reasons:
+
+to keep individual mongo container per app with its own data and launch paired with the application at any time
+
+to launch even production SA container'zed apps locally without building anything locally
+
+to launch/use any third party services liek local S3 or mock services
+
+as Pod/container based Kubernetes is the future
+
+If interested
+
+I am thinking of spending couple of hours/week to get a simple workshop, if interested to jumpstart use of docker for your daily dev or devops work, you are welcome to join
+
+And I encourage people to attend if and only if you are going to make use and get benefits from it.
+
+Please do not spend time, to know the technology like webinar, since this will be workshop where we would be running example to get familiar
+
+Aim of this workshop is to get you to very basics, then you can cruise the boat on your own  
+
+The brief approach of workshop:
+
+Day.1) Install DockerDesktop or Oracle VirtualBox
+
+Please complete this on your own by July 15th;
+
+Day.1.Step.1) Install Docker-Desktop for non-linux desktops following https://docs.docker.com/get-docker/
+
+If you have issues installing in Windows, the best option is to just install Oracle Virtual Box and Get Unbuntu 10.04 server as guest
+
+Day.1.Step.2) Test you can run hello-world like it shows, without sudo https://docs.docker.com/get-started/#test-docker-installation
+
+Day.2) First workshop - docker Images
+
+Hoping to do this first meeting/hands-on this July Friday 17th, 2020
+
+Step.1) Basics of "Docker Technology" 
+
+know about - engine (daemon) or docker cli
+
+Difference between VM's and Containers with examples
+
+Docker images, using  - pull, run, stop and rmi
+
+Step.2) docker containers
+
+Will be about  start, stop, rm, exec, attach, cp
+
+Step.3) docker volume
+
+how mount local folders or create volumes
+
+Step.4) docker network
+
+use bridge and Host
+
