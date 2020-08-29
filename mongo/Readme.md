@@ -67,3 +67,57 @@ docker run  --rm -it rpradesh/mongo:3.2.22 mongo --port 27017 --host docker.for.
 docker run  --rm --network=local_network -it rpradesh/mongo:3.2.22 bash
 
 ```
+
+## New Mongo Image - BUILD
+```bash
+cd $MY_WORKSPACE/docker/mongo
+docker build -t rpradesh/mongo322 .
+```
+
+## Steps to BACKUP and RETRIEVE data into new Mongo Container
+* Helps to generate common set of data or seed data in a volume and use it to boot into any mongo container
+* Consider your app name is "eaa" (example)
+  
+### Step 1:
+* You might have a mongo instance already running or newly started as follows
+```bash
+docker run --name mongo322_eaa  -p 27029:27017 -d rpradesh/mongo322
+
+docker exec -it mongo322_eaa bash
+mongo --quiet
+# let us create data in above mongo container
+db.getSiblingDB("dbstore").getCollection("col_1").insertOne({appName: "eaa 1" });
+db.getSiblingDB("dbstore").getCollection("col_1").insertOne({nowDate: new Date() });
+db.getSiblingDB("dbstore").getCollection("col_1").find({});
+exit
+
+```
+
+### Step 2 - create a volume holder
+* If our wish is to copy data from "mongo322_eaa" into new "mongo322_eaa_2" container 
+* First create a volume in app called "eaa"
+
+```bash
+docker volume create mongo_eaa_vol
+```
+
+### Step 3 - one time backup
+* we will use following command to copy data to volume
+* Note for proper snapshot to be taken, the inflight transcations might be missed
+```bash  
+docker run --rm --volumes-from  mongo322_eaa -v mongo_eaa_vol:/mongo-backup -it ubuntu /bin/bash -c "cp -R /var/lib/mongodb/* /mongo-backup"
+```
+
+### Step 4 - copying from volume to new container
+* we can copy data into any number of new containers
+* Say we want to copy data from backup volume called "mongo_eaa_vol" into "mongo322_eaa_2" container
+* Also the mongo container takes care of handling restarts - not to RE-copy data at "docker start"
+* Data is copied from backup volume only at first docker-run
+  
+```bash
+docker run --name mongo322_eaa_2 -v mongo_eaa_vol:/mongo-backup -e COPY_DATA_FROM=/mongo-backup -p 27039:27017 -d rpradesh/mongo322
+
+# as a client let us check data in new container to validate copy is done
+docker exec -it mongo322_eaa_2 bash
+mongo --quiet --eval 'db.getSiblingDB("dbstore").getCollection("col_1").find({});'
+```

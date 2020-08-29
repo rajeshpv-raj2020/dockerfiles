@@ -34,7 +34,9 @@ RUN wget -qO - https://www.mongodb.org/static/pgp/server-3.2.asc | apt-key add -
 COPY entrypoint.sh /entrypoint.sh
 #COPY setTimeZone.sh /setTimeZone.sh
 
-RUN chmod u+rx /entrypoint.sh 
-    #&& chmod u+rx /setTimeZone.sh
+RUN chmod u+rx /entrypoint.sh  \
+&& echo 'LANG="en_US.UTF-8"' >> /etc/default/locale \
+&& echo 'LANGUAGE="en_US"' >> /etc/default/locale \
+&& echo 'LC_ALL="en_US.UTF-8"' >> /etc/default/locale
 
 ENTRYPOINT ["/entrypoint.sh"] 
