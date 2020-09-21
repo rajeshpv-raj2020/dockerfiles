@@ -1,10 +1,13 @@
 ## Build Image
 * Building SonarQube "Developer Edition"; followed https://hub.docker.com/_/sonarqube/ 
 
+* Open in browser https://binaries.sonarsource.com/CommercialDistribution/sonarqube-developer/
+* Get list of release numbers available here as "8.3.1.34397 or 8.4.2.36762"
 ```bash
 cd $MY_WORKSPACE/docker/sonarqube
 docker build --build-arg SONARQUBE_VERSION=8.2.0.32929 -t rpradesh/sonarqube:8.2.0 .
 docker build --build-arg SONARQUBE_VERSION=8.3.1.34397 -t rpradesh/sonarqube:8.3.1 .
+docker build --build-arg SONARQUBE_VERSION=8.4.2.36762 -t rpradesh/sonarqube:8.4.2 .
 ```
 
 ## Test Image
