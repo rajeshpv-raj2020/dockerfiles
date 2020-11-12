@@ -32,3 +32,7 @@ RUN echo 'LC_ALL="en_US.UTF-8"' >> /etc/default/locale
 
 
 ENV PATH="$PATH:$JAVA_HOME/bin:$GROOVY_HOME/bin:$MVN_HOME/bin"
+
+wget --no-check-certificate -q https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.tar.gz -O jdk.tgz
+	tar xfz jdk.tgz && \
+	mv amazon-corretto-8.272.10.3-linux-x64 jdk8
